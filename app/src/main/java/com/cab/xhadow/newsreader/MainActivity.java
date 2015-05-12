@@ -1,9 +1,11 @@
 package com.cab.xhadow.newsreader;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,6 +21,24 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void onClickNY(View v) {
+        Intent intent = new Intent(MainActivity.this, News_Activity.class);
+        intent.putExtra("url", "http://mobile.nytimes.com");
+        startActivity(intent);
+    }
+
+    public void onClickMercury(View v) {
+        Intent intent = new Intent(MainActivity.this, News_Activity.class);
+        intent.putExtra("url", "http://www.mercurynews.com");
+        startActivity(intent);
+    }
+
+    public void onClickSentinel(View v) {
+        Intent intent = new Intent(MainActivity.this, News_Activity.class);
+        intent.putExtra("url", "http://www.santacruzsentinel.com");
+        startActivity(intent);
     }
 
     @Override
