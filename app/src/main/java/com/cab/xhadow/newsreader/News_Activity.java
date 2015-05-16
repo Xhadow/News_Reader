@@ -2,6 +2,7 @@ package com.cab.xhadow.newsreader;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -23,7 +24,7 @@ public class News_Activity extends ActionBarActivity {
     static final public String PREF_URL = "restore_url";
     static final public String WEBPAGE_NOTHING = "about:blank";
 
-    private static String url = "http://reddit.com";
+    private static String urlHere = "http://reddit.com";
     WebView myWebView;
 
     @Override
@@ -34,10 +35,10 @@ public class News_Activity extends ActionBarActivity {
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         Intent intent = getIntent();
-        url = intent.getStringExtra("url");
-        Log.i(LOG_TAG, "Received string: " + url);
-        myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl(url);
+        urlHere = intent.getStringExtra("url");
+        Log.i(LOG_TAG, "Received string: " + urlHere);
+        myWebView.setWebViewClient(new CustomWebViewClient());
+        myWebView.loadUrl(urlHere);
     }
 
     @Override
@@ -74,7 +75,7 @@ public class News_Activity extends ActionBarActivity {
     public void onClickShare(View v) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, url);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, myWebView.getUrl());
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
@@ -99,6 +100,19 @@ public class News_Activity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class CustomWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if(url.contains(urlHere)) {
+                view.loadUrl(url);
+            } else {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(i);
+            }
+            return true;
+        }
     }
 
     @Override

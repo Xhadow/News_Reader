@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:background="@drawable/backshape"
     android:layout_height="match_parent" android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="5dp"
@@ -13,13 +14,20 @@
         android:text="Share"
         android:onClick="onClickShare"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="6"
+        android:shadowDy="-2"
+        android:shadowRadius="7"/>
 
     <WebView
         android:id="@+id/webView1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@drawable/viewshape"
         android:layout_above="@+id/button1"
         android:layout_alignParentTop="true" />
 

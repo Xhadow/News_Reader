@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:background="@drawable/backshape"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -10,30 +11,45 @@
         android:layout_height="wrap_content"
         android:text="New York Times"
         android:id="@+id/button"
+        android:layout_marginTop="40dp"
+        android:onClick="onClickNY"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:onClick="onClickNY"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="6"
+        android:shadowDy="-2"
+        android:shadowRadius="7"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="San Jose Mercury News"
         android:id="@+id/button2"
+        android:onClick="onClickMercury"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:onClick="onClickMercury"/>
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="6"
+        android:shadowDy="-2"
+        android:shadowRadius="7"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Santa Cruz Sentinel"
         android:id="@+id/button3"
+        android:onClick="onClickSentinel"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:onClick="onClickSentinel"/>
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="6"
+        android:shadowDy="-2"
+        android:shadowRadius="7"/>
 
 
 </RelativeLayout>
