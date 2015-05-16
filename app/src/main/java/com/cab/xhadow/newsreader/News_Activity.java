@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,16 +29,15 @@ public class News_Activity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_news_);
-        //setContentView(R.layout.activity_main);
-        myWebView = new WebView(this);
+        setContentView(R.layout.activity_news_);
+        myWebView = (WebView) findViewById(R.id.webView1);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         Log.i(LOG_TAG, "Received string: " + url);
+        myWebView.setWebViewClient(new WebViewClient());
         myWebView.loadUrl(url);
-        setContentView(myWebView);
     }
 
     @Override
